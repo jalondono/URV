@@ -57,4 +57,4 @@ word2number==1.1
 WTForms==2.2.1
 autokey==0.95.4
 pyinotify==0.9.6
-dbus-1 >= 1.8
+dbus-1>=1.8
