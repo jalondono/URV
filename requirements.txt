@@ -14,7 +14,6 @@ httplib2==0.11.3
 idna==2.6
 itsdangerous==1.1.0
 Jinja2==2.10.3
-kernelstub==3.1.0
 keyring==18.0.1
 keyrings.alt==3.1.1
 language-selector==0.1
