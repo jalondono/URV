@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+	{% from "_macro.html" import render_field %}
+	<div class="limiter">
+		<div class="container-login100" style="background-image: url('../static/images/09nepalday2.jpg');">
+			<div class="wrap-login100 p-t-30 p-b-50">
+				<span class="login100-form-title p-b-41">
+					Unique Registry of Victims
+				</span>
+				<form class="login100-form validate-form p-b-33 p-t-5" name="sent_message" id="victims_form" method="POST">
+					<div class="wrap-input100 validate-input" data-validate = "Enter a Place">
+						{{ render_field(form.place , class='input100' , placeholder="Place") }}
+						<span class="focus-input100" data-placeholder="&#xe834;"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Enter # of Victims">
+						{{ render_field(form.victims , class='input100' , placeholder="# of Victims") }}
+						<span class="focus-input100" data-placeholder="&#xe837;"></span>
+					</div>
+
+					<div class="container-login100-form-btn m-t-32">
+						<button class="login100-form-btn" type="submit">
+							Save
+						</button>
+
+					</div>
+				</form>
+				<form  class="login100-form  p-b-33 p-t-5" name="sent_message" id="get_data" method="GET">
+					<div class="container-login100-form-btn m-t-32">
+						<button class="login100-form-btn" type="submit">
+							Calculate
+						</button>
+					</div>
+					<div class="results">
+						<div class="titles">
+							<div><p>Place</p></div>
+							<div><p>Number of victims</p></div>
+						</div>
+						<div class="data">
+							<ul class="list_data">
+								{% for report in reports.values()|sort(attribute='place') %}
+									<li class="item_data">
+										<div>{{ report.place }}</div>
+										<div>{{ report.victims }}</div>
+									</li>
+								{% endfor %}
+							</ul>
+						</div>
+
+					</div>
+					<div class="total">
+							<p>Total :</p>
+							<div> {{ total }}</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock %}
