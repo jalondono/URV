@@ -3,7 +3,6 @@ blinker==1.4
 certifi==2018.8.24
 chardet==3.0.4
 Click==7.0
-command-not-found==0.3
 configobj==5.0.6
 cryptography==2.6.1
 cupshelpers==1.0
