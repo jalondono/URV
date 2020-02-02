@@ -8,7 +8,7 @@ from models.word_to_number import word_to_number
 
 
 """ Application """
-app = Flask(__name__, template_folder="web_flask/templates")
+app = Flask(__name__)
 
 
 @app.errorhandler(404)
