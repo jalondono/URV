@@ -46,3 +46,7 @@ class Disaster:
         my_dict["created_at"] = my_dict['created_at'].isoformat()
         return my_dict
 
+    def delete(self):
+        """delete the current instance from storage"""
+        models.storage.delete(self)
+

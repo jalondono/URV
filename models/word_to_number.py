@@ -17,6 +17,8 @@ def word_to_number(number):
             for item in list_str_numbers:
                 str_number += item + ' '
             int_number = w2n.word_to_num(str_number)
+        else:
+            int_number = w2n.word_to_num(number)
         return int_number
 
 

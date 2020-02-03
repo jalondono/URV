@@ -32,15 +32,19 @@ def index():
         find_obj = storage.get(comment_form.place.data)
         victims_int = word_to_number(comment_form.victims.data)
         if find_obj is None:
-            event = Disaster(place=comment_form.place.data, victims=victims_int)
-            storage.new(event)
-            storage.save()
+            if victims_int != 0:
+                event = Disaster(place=comment_form.place.data, victims=victims_int)
+                storage.new(event)
+                storage.save()
         else:
             storage.reload()
             data = storage.all()
             obj_to_change = data["Disaster." + find_obj]
-            obj_to_change.victims = victims_int
-            storage.save()
+            if victims_int == 0:
+                obj_to_change.delete()
+            else:
+                obj_to_change.victims = victims_int
+                storage.save()
     return render_template("index.html", title='test', form=comment_form, reports={}, total=0)
 
 

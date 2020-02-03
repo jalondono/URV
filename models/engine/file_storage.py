@@ -30,10 +30,11 @@ class FileStorage:
     def save(self):
         """Add a new instance to the dictionary of objects and the save it"""
         my_dict = {}
-        for key, value in self.__objects.items():
-            my_dict[key] = value.to_dict()
-            with open(self.__file_path, 'w', encoding="UTF-8") as f:
-                json.dump(my_dict, f)
+        if len(self.__objects) > 0:
+            for key, value in self.__objects.items():
+                my_dict[key] = value.to_dict()
+        with open(self.__file_path, 'w', encoding="UTF-8") as f:
+            json.dump(my_dict, f)
 
     def reload(self):
         """serialize the file path to JSON file path
@@ -56,3 +57,24 @@ class FileStorage:
                 if obj.place == place:
                     return obj.id
             return None
+
+    def delete(self, obj=None):
+        """
+        to delete obj from __objects if it’s inside
+        Args:
+            obj: object that its going to be deleted
+        Returns:
+        """
+        if obj is not None:
+            obj_id = obj.id
+            obj_class = obj.__class__.__name__
+            key = obj_class + '.' + obj_id
+            try:
+                objects = self.__objects
+                if key in objects:
+                    del objects[key]
+                    self.save()
+                else:
+                    raise KeyError()
+            except KeyError:
+                print("** no instance found **")
