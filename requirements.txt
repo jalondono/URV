@@ -2,7 +2,7 @@ selenium
 Click==7.0
 Flask==1.1.1
 gunicorn==20.0.4
-httplib2==0.11.3
+httplib2==0.18.0
 idna==2.6
 itsdangerous==1.1.0
 Jinja2==2.10.3
